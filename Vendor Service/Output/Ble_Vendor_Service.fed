@@ -1,0 +1,115 @@
+;#<FEEDBACK># ARM Linker, 5060020: Last Updated: Wed Sep 13 12:13:02 2017
+;VERSION 0.2
+;FILE key.o
+__asm___5_key_c_dfb3ce20____REV16 <= USED 0
+__asm___5_key_c_dfb3ce20____REVSH <= USED 0
+keylong_config <= USED 0
+;FILE led.o
+__asm___5_led_c_dad1f1a3____REV16 <= USED 0
+__asm___5_led_c_dad1f1a3____REVSH <= USED 0
+led_config <= USED 0
+;FILE main.o
+ATTC_Confirmation <= USED 0
+ATTC_ExecuteWriteReq <= USED 0
+ATTC_FindByTypeValueReq <= USED 0
+ATTC_FindInfoReq <= USED 0
+ATTC_MTUReq <= USED 0
+ATTC_PrepareWriteReq <= USED 0
+ATTC_ReadBlobReq <= USED 0
+ATTC_ReadByGroupTypeReq <= USED 0
+ATTC_ReadByTypeReq <= USED 0
+ATTC_ReadMultipleReq <= USED 0
+ATTC_ReadReq <= USED 0
+ATTC_WriteCmdReq <= USED 0
+ATTC_WriteReq <= USED 0
+AddBondDevice <= USED 0
+AttTxPacket <= USED 0
+CheckFIFOFull <= USED 0
+ConnectionLatencyMode <= USED 0
+DelAllBondDevice <= USED 0
+DelBondDevice <= USED 0
+DisConnect <= USED 0
+GetBondDevice <= USED 0
+GetClock <= USED 0
+GetDevAddr <= USED 0
+GetLinkParameters <= USED 0
+GetMCUClock <= USED 0
+LLSleep <= USED 0
+LinkWakeup <= USED 0
+RCOSCCalibration <= USED 0
+Rand <= USED 0
+ReadProfileData <= USED 0
+SecurityReq <= USED 0
+SetATTCCallback <= USED 0
+SetAdvAccCode <= USED 0
+SetConnectionUpdate <= USED 0
+SetLEFeature <= USED 0
+SetLLEvtCallback <= USED 0
+SetPasskey <= USED 0
+SystemPowerDown <= USED 0
+SystemReset <= USED 0
+WriteProfileData <= USED 0
+__asm___6_main_c_82deaea2____REV16 <= USED 0
+__asm___6_main_c_82deaea2____REVSH <= USED 0
+__asm___6_main_c_DelayUS____REV16 <= USED 0
+__asm___6_main_c_DelayUS____REVSH <= USED 0
+ble_flash_erase <= USED 0
+ble_flash_read <= USED 0
+ble_flash_write <= USED 0
+checkSlpCfg <= USED 0
+queryBufEnough <= USED 0
+;FILE ota.o
+__asm___5_ota_c_pevt____REV16 <= USED 0
+__asm___5_ota_c_pevt____REVSH <= USED 0
+;FILE startup_armcm0.o
+;FILE syd8801_debug.o
+__asm___15_syd8801_debug_c_dbg_init____REV16 <= USED 0
+__asm___15_syd8801_debug_c_dbg_init____REVSH <= USED 0
+dbg_hexdump <= USED 0
+dbg_init <= USED 0
+dbg_printf <= USED 0
+;FILE syd8801_delay.o
+__asm___15_syd8801_delay_c_delay_ms____REV16 <= USED 0
+__asm___15_syd8801_delay_c_delay_ms____REVSH <= USED 0
+delay_ms <= USED 0
+;FILE syd8801_gpio.o
+GPIO_Set_Output <= USED 0
+__asm___14_syd8801_gpio_c_54955bba____REV16 <= USED 0
+__asm___14_syd8801_gpio_c_54955bba____REVSH <= USED 0
+io_irq_disable <= USED 0
+;FILE syd8801_ioi2c.o
+__asm___15_syd8801_ioi2c_c_5f679a16____REV16 <= USED 0
+__asm___15_syd8801_ioi2c_c_5f679a16____REVSH <= USED 0
+i2c_reg_read <= USED 0
+i2c_reg_write <= USED 0
+iic_receivedata <= USED 0
+iic_senddata <= USED 0
+iic_sendid <= USED 0
+ioi2c_ioconfig <= USED 0
+start <= USED 0
+stop <= USED 0
+;FILE syd8801_timer.o
+__asm___15_syd8801_timer_c_6b19c4ce____REV16 <= USED 0
+__asm___15_syd8801_timer_c_6b19c4ce____REVSH <= USED 0
+timer_0_delay_32us <= USED 0
+timer_1_disable <= USED 0
+timer_1_enable <= USED 0
+timer_2_disable <= USED 0
+timer_2_enable <= USED 0
+;FILE syd8801_uart.o
+USART0_Write_String <= USED 0
+USART1_Write_String <= USED 0
+__asm___14_syd8801_uart_c_e089bde3____REV16 <= USED 0
+__asm___14_syd8801_uart_c_e089bde3____REVSH <= USED 0
+uart_0_close <= USED 0
+uart_0_init <= USED 0
+uart_0_read <= USED 0
+uart_0_write <= USED 0
+uart_1_close <= USED 0
+uart_1_init <= USED 0
+uart_1_read <= USED 0
+uart_1_write <= USED 0
+;FILE system_armcm0.o
+SystemCoreClockUpdate <= USED 0
+__asm___15_system_ARMCM0_c_5d646a67____REV16 <= USED 0
+__asm___15_system_ARMCM0_c_5d646a67____REVSH <= USED 0

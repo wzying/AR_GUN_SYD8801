@@ -1,0 +1,10 @@
+.\output\key.o: Main\key.c
+.\output\key.o: Main\key.h
+.\output\key.o: .\Include\ARMCM0.h
+.\output\key.o: D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include\core_cm0.h
+.\output\key.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\key.o: D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include\core_cmInstr.h
+.\output\key.o: D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include\core_cmFunc.h
+.\output\key.o: D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\ARM\ARMCM0\Include\system_ARMCM0.h
+.\output\key.o: .\Include\syd8801_gpio.h
+.\output\key.o: .\Include\syd8801_timer.h

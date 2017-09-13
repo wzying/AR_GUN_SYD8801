@@ -1,0 +1,11 @@
+.\output\syd8801_debug.o: Driver\syd8801_debug.c
+.\output\syd8801_debug.o: .\Include\syd8801_debug.h
+.\output\syd8801_debug.o: .\Include\ARMCM0.h
+.\output\syd8801_debug.o: D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include\core_cm0.h
+.\output\syd8801_debug.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\syd8801_debug.o: D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include\core_cmInstr.h
+.\output\syd8801_debug.o: D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include\core_cmFunc.h
+.\output\syd8801_debug.o: D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\ARM\ARMCM0\Include\system_ARMCM0.h
+.\output\syd8801_debug.o: .\Include\syd8801_uart.h
+.\output\syd8801_debug.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\output\syd8801_debug.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

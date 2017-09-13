@@ -1,0 +1,49 @@
+﻿OTA流程 : 
+1. CMD_FW_ERASE
+2. CMD_FW_WRITE
+3. CMD_FW_UPGRADE
+4. Reset
+
+cmd執行流程 : 
+1. 對 OTA_UUID(0xFF01) or OTA_HANDLE(0x0025) 執行 write 動做
+2. 對 OTA_UUID(0xFF01) or OTA_HANDLE(0x0025) 執行 read 動做，檢查回傳值是否完成後在執行下一個cmd
+
+cmd & rsp 內容
+
+CMD_FW_ERASE :
+write:
+data[0] = 0x16 (opcode)
+data[1] = 0x00 (parameters length)
+read:
+data[0] = 0x0E (event code)
+data[1] = 0x02 (event length)
+data[2] = 0x16 (opcode)
+data[3] = 0x00 (status)
+
+CMD_FW_WRITE :
+write:
+data[0] = 0x17 (opcode)
+data[1] = 0x13 (parameters length)
+data[2] = 0x?? (fw offset 0)
+data[3] = 0x?? (fw offset 1)
+data[4] = 0x?? (fw size)
+data[5~21] = 0x?? (fw data)
+read:
+data[0] = 0x0E (event code)
+data[1] = 0x02 (event length)
+data[2] = 0x17 (opcode)
+data[3] = 0x00 (status)
+
+CMD_FW_UPGRADE :
+write:
+data[0] = 0x18 (opcode)
+data[1] = 0x04 (parameters length)
+data[2] = 0x?? (fw total size 0)
+data[3] = 0x?? (fw total size 1)
+data[4] = 0x?? (fw checksum 0)
+data[5] = 0x?? (fw checksum 1)
+read:
+data[0] = 0x0E (event code)
+data[1] = 0x02 (event length)
+data[2] = 0x18 (opcode)
+data[3] = 0x00 (status)

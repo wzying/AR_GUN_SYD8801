@@ -1,0 +1,7 @@
+-c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I.\Include -I.\ble -I.\Main
+-I "D:\work\ARÇ¹\³ÌÐò\SYD8801\AR_GUN_SYD8801\Vendor Service\RTE"
+-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include
+-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\ARM\ARMCM0\Include
+-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\Include
+-D__UVISION_VERSION="516" -D_RTE_ -DARMCM0 -DPIXART_ARM_PROJECT
+-o .\output\main.o --omf_browse .\output\main.crf --depend .\output\main.d --feedback ".\Output\Ble_Vendor_Service.fed" "Main\main.c"

@@ -1,0 +1,20 @@
+--cpu Cortex-M0
+".\output\main.o"
+".\output\key.o"
+".\output\led.o"
+".\output\ota.o"
+".\output\syd8801_debug.o"
+".\output\syd8801_delay.o"
+".\output\syd8801_gpio.o"
+".\output\syd8801_timer.o"
+".\output\syd8801_uart.o"
+".\output\syd8801_ioi2c.o"
+".\ble\syd_8801_lib.lib"
+".\output\startup_armcm0.o"
+".\output\system_armcm0.o"
+--library_type=microlib
+--feedback ".\Output\Ble_Vendor_Service.fed" --feedback_image=none
+--strict --scatter ".\Output\Ble_Vendor_Service.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Ble_Vendor_Service.map" -o .\Output\Ble_Vendor_Service.axf
