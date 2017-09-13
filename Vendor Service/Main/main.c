@@ -702,7 +702,7 @@ int main()
 			//led_turn(LED0);     // 翻转LED0  指示程序运行
 			
 			cnt_1s++;
-			if(cnt_1s>=180)
+			if(cnt_1s>=180)//最长三分钟校准一次
 			{
 					cnt_1s=0;
 					#ifdef USER_32K_CLOCK_RCOSC
@@ -710,13 +710,6 @@ int main()
 					//timer_calender_handle();  内部晶振即使校准依旧有一个固定的偏差
 					#endif		
 			}  
-			
-			if((cnt_1s % 4) == 0)
-			{
-					//BLE发送数据
-					//BLE_SendData(ble_data, 20);
-				//BLE_SendData("Hello BUTA \r\n", 13);
-			}
 			
 		}
 				
