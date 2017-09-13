@@ -471,6 +471,11 @@
               <FileType>1</FileType>
               <FilePath>.\Driver\syd8801_ioi2c.c</FilePath>
             </File>
+            <File>
+              <FileName>syd8801_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Driver\syd8801_adc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

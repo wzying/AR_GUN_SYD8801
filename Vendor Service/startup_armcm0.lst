@@ -298,12 +298,12 @@ ARM Macro Assembler    Page 5
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0 --apcs=interw
 ork --depend=.\output\startup_armcm0.d -o.\output\startup_armcm0.o -I"D:\work\A
-RÇ¹\³ÌÐò\SYD8801\AR_GUN_SYD8801\Vendor Service\RTE" -ID:\Keil_v5\ARM\PACK\ARM\C
-MSIS\4.3.0\CMSIS\Include -ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\ARM\ARMCM
-0\Include -ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\Include --predefine="__E
-VAL SETA 1" --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA
- 516" --predefine="_RTE_ SETA 1" --predefine="ARMCM0 SETA 1" --list=.\startup_a
-rmcm0.lst RTE\Device\ARMCM0\startup_ARMCM0.s
+RÇ¹\AR_GUN_SYD8801_GIT\Vendor Service\RTE" -ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.
+0\CMSIS\Include -ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\ARM\ARMCM0\Include
+ -ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\Include --predefine="__EVAL SETA 
+1" --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 516" --p
+redefine="_RTE_ SETA 1" --predefine="ARMCM0 SETA 1" --list=.\startup_armcm0.lst
+ RTE\Device\ARMCM0\startup_ARMCM0.s
 
 
 

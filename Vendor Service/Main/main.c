@@ -32,6 +32,7 @@
 #include "lib.h"
 #include "SYD8801EVB_service.h"
 #include <string.h>
+#include "syd8801_adc.h"
 
 #define MOTOR BIT20
 
@@ -671,6 +672,8 @@ static void gpio_int_callback(void)
 
 int main()
 {	
+	uint16_t adc;	
+	float vat=0.0;
 //	uint8_t ble_data[20] = {0x11,0x22,0x33,0x44,0x55,0x66,0x77,0x88,0x99,0x00,0x11,0x22,0x33,0x44,0x55,0x66,0x77,0x88,0x99,0x00};;
 	
 	__disable_irq();
@@ -711,13 +714,19 @@ int main()
 					#endif		
 			}  
 			
-			if((cnt_1s % 4) == 0)
-			{
-					//BLE·¢ËÍÊý¾Ý
-					//BLE_SendData(ble_data, 20);
-				//BLE_SendData("Hello BUTA \r\n", 13);
-			}
-			
+			//ADC
+			adc_init(2);
+			adc_open();
+			adc=get_adcval();
+			vat=(float)adc*3.6/1024;  
+			dbg_printf("ch2 adc : %d vat: %4.3f \n",adc,vat);
+
+			adc_init(3);
+			adc_open();
+			adc=get_adcval();
+			vat=(float)adc*3.6/1024;  
+			dbg_printf("ch3 adc : %d vat: %4.3f \n",adc,vat);
+							
 		}
 				
 		#ifdef USER_MARCHE_STATE

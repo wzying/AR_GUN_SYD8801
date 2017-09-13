@@ -16,3 +16,4 @@
 .\output\main.o: Main\led.h
 .\output\main.o: .\Include\SYD8801EVB_service.h
 .\output\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\output\main.o: .\Include\syd8801_adc.h

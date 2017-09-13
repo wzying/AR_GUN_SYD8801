@@ -4,4 +4,4 @@
 -I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\ARM\ARMCM0\Include
 -I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\Include
 -D__UVISION_VERSION="516" -D_RTE_ -DARMCM0 -DPIXART_ARM_PROJECT
--o .\output\key.o --omf_browse .\output\key.crf --depend .\output\key.d --feedback ".\Output\Ble_Vendor_Service.fed" "Main\key.c"
+-o .\output\syd8801_adc.o --omf_browse .\output\syd8801_adc.crf --depend .\output\syd8801_adc.d --feedback ".\Output\Ble_Vendor_Service.fed" "Driver\syd8801_adc.c"
