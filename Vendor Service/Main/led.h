@@ -4,10 +4,9 @@
 #include "ARMCM0.h"
 
 //#define LED0 BIT16
-#define LED1 BIT17
-#define LED2 BIT18
-#define LED0 BIT19
-#define LEDALL ( LED0 | LED1 | LED2)
+#define LED1 BIT9
+#define LED0 BIT8
+#define LEDALL ( LED0 | LED1 )
 
 void led_config(uint32_t led);
 void led_open(uint32_t led);

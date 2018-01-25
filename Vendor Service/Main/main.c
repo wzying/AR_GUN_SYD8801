@@ -33,7 +33,7 @@
 #include "lib.h"
 #include "SYD8801EVB_service.h"
 #include <string.h>
-#include "syd8801_adc.h"
+//#include "syd8801_adc.h"
 
 #define MOTOR BIT20
 
@@ -62,15 +62,18 @@ uint8_t ADV_DATA[] = {	0x02, // length
 					  	0x03, //AD Type: Complete list of 16-bit UUIDs 
 					  	0x12, // UUID: Human Interface Device (0x1812)
 					  	0x18, // UUID: Human Interface Device (0x1812)
-					  	0x08, // length
+					  	  11, // length
 					  	0x09, // AD Type: Complete local name
-					  	'S',
-					  	'Y',
-					  	'D',
-					  	'8',
-					  	'8',
-					  	'0',
-					  	'1',
+					  	'i',
+					  	'C',
+					  	'O',
+					  	'M',
+					  	'M',
+					  	' ',
+					  	'U',
+					  	'A',
+						  'R',
+						  'T',
 					  	};
 
 uint16_t ADV_DATA_SZ = sizeof(ADV_DATA); 
@@ -98,8 +101,8 @@ void SystemSleepSYD(enum WAKEUP_TYPE wakeup ,uint8_t timer_wakeup_en,uint8_t gpi
 	}
 	else
 	{
-		PW_CTRL->DSLP_SYS = 1; // 执行这句话后马上进入深度睡眠模式，唤醒将会进入复位状态，任何东西都将会丢失
 		led_close(LEDALL);
+		PW_CTRL->DSLP_SYS = 1; // 执行这句话后马上进入深度睡眠模式，唤醒将会进入复位状态，任何东西都将会丢失	
 		while(1);
 	}
 }
@@ -209,15 +212,15 @@ static void ble_gatt_read(struct gap_att_read_evt evt)
 
 		SetGATTReadRsp(gatt_buf_sz, gatt_buf);
 	}
-	else if(evt.uuid == OTA_Read_Write_UUID)
-	{
-		uint8_t sz=0;
-		uint8_t rsp[sizeof(struct hci_evt)]={0};
+//	else if(evt.uuid == OTA_Read_Write_UUID)
+//	{
+//		uint8_t sz=0;
+//		uint8_t rsp[sizeof(struct hci_evt)]={0};
 
-		ota_rsp(rsp, &sz);
+//		ota_rsp(rsp, &sz);
 
-		SetGATTReadRsp(sz, rsp);
-	}
+//		SetGATTReadRsp(sz, rsp);
+//	}
 	else if(evt.uuid == BATTERY_LEVEL_UUID)
 	{
 		static uint8_t j=100;
@@ -235,10 +238,10 @@ static void ble_gatt_write(struct gap_att_write_evt evt)
 	{
 		// rx data
 	}
-	else if(evt.uuid== OTA_Read_Write_UUID)
-	{
-		ota_cmd(evt.data, evt.sz);
-	}
+//	else if(evt.uuid== OTA_Read_Write_UUID)
+//	{
+//		ota_cmd(evt.data, evt.sz);
+//	}
 	
 		#ifdef USER_MARCHE_STATE
 		march_state.state =0x8e;
@@ -255,7 +258,7 @@ void BLE_SendData(uint8_t *buf, uint8_t len)
 
 		report.primary = UART;
 		report.uuid = UART_NOTIFY_UUID;
-		report.hdl = 0x0001F;
+		report.hdl = UART_NOTIFY_VALUE_HANDLE;
 		report.value = BLE_GATT_NOTIFICATION;
 
 		GATTDataSend(BLE_GATT_NOTIFICATION, &report, len, buf) ;
@@ -286,7 +289,11 @@ static void timer0_adv_callback()
 			{
 //				dbg_printf("Adv Completely!\r\n\r\n");
 				timer_0_disable();
-				SystemSleepSYD(SLEEP_WAKEUP,1,1,KEY0);
+				
+				//SystemSleepSYD(SLEEP_WAKEUP,1,1,KEY1);
+				//SystemSleepSYD(POWERDOWN_WAKEUP,1,1,KEY1);
+				SystemSleepSYD(POWERDOWN_WAKEUP,0,1,KEY1);
+				
 				//io_irq_disable();
 				//io_irq_enable( KEY0, &gpio_int_callback);
 			}
@@ -336,13 +343,13 @@ void ble_evt_callback(struct gap_ble_evt *p_evt)
 
 		//SecurityReq(1,1);
 		
-		led_open(LED1);    //点亮LED1来表示已经打开了连接
+		//led_open(LED1);    //点亮LED1来表示已经打开了连接
 	}
 	else if(p_evt->evt_code == GAP_EVT_DISCONNECTED)
 	{	
 		start_adv=1;
 		
-		led_close(LED1);    //关闭LED1来表示已经断开了连接
+		//led_close(LED1);    //关闭LED1来表示已经断开了连接
 		
 		ble_init();
 
@@ -445,7 +452,7 @@ static void ble_init()
 	struct gap_evt_callback evt;		
 	struct smp_pairing_req sec_params;	
 	struct gap_wakeup_config pw_cfg;
-	struct gap_ble_addr ble_addr;
+//	struct gap_ble_addr ble_addr;
 		
 	BleInit();
 	
@@ -474,14 +481,14 @@ static void ble_init()
 	SetEvtCallback(&evt);
 
 	/* bluetooth address */
-	ble_addr.type = RANDOM_ADDRESS_TYPE;
-	ble_addr.addr[0] = 0x55;
-	ble_addr.addr[1] = 0x44;
-	ble_addr.addr[2] = 0x33;
-	ble_addr.addr[3] = 0x22;
-	ble_addr.addr[4] = 0x11;
-	ble_addr.addr[5] = 0xff;
-	SetDevAddr(&ble_addr);
+//	ble_addr.type = RANDOM_ADDRESS_TYPE;
+//	ble_addr.addr[0] = 0x55;
+//	ble_addr.addr[1] = 0x44;
+//	ble_addr.addr[2] = 0x33;
+//	ble_addr.addr[3] = 0x22;
+//	ble_addr.addr[4] = 0x11;
+//	ble_addr.addr[5] = 0xff;
+//	SetDevAddr(&ble_addr);
 
 	/* Bond Manager (MAX:10) */
 	SetBondManagerIndex(0x00);
@@ -555,7 +562,7 @@ static void gpio_init()
 	PIN_CONFIG->PIN_26_PULL_UP = PIN_PULL_UP;
 	PIN_CONFIG->PIN_27_PULL_UP = PIN_PULL_UP;
 	key_config();
-	//led_config(LEDALL);   //配置LED管脚
+	led_config(LEDALL);   //配置LED管脚
 	//GPIO_Set_Input(KEY0|KEY1|KEY2|KEY3,KEY0|KEY1|KEY2|KEY3,PIN_INPUT_IVERTED);
 	//GPIO_Pin_Set(MOTOR);   //默认关灯
 }
@@ -563,7 +570,7 @@ static void gpio_init()
 void march_state_process(void){
 		if(march_state.state & 0x80){
 			march_state.state &=0x7f;
-			led_turn(LED1);     // 翻转LED1  指示蓝牙状态发生了变化
+			//led_turn(LED1);     // 翻转LED1  指示蓝牙状态发生了变化
 			switch(march_state.state){
 				case 1:
 					#ifdef _DEBUG_
@@ -643,45 +650,71 @@ void march_state_process(void){
 }
 #endif
 /*
-外部中断回调函数 - 上升沿触发中断
+	外部中断回调函数 - 上升沿触发中断
+	功能键： KEY0  -> 0x04
+	扳机键： KEY1  -> 0x03
+	弹匣键： KEY2  -> 0x02
 */
+uint8_t key_SendData[4] = {0x04,0x03,0x02,0x01};
 static void gpio_int_callback(void)
 {
 	uint32_t flag = GPIO_IRQ_CTRL->GPIO_INT;
+	delay_ms(10);
+	
 	if(flag & KEY0)
 	{
-			adv_times = ADV_TIME_OUT*32768/ADV_INTERVAL;		//广播超时时间
-	    timer_0_enable(ADV_INTERVAL, timer0_adv_callback);
-			//io_irq_enable(KEY0 | KEY1 | KEY2 | KEY3, &gpio_int_callback);
-		
-		BLE_SendData("KEY0\r\n", 6);
-		//SystemReset();
+		if(KEY0_GPI)
+		{
+	//			adv_times = ADV_TIME_OUT*32768/ADV_INTERVAL;		//广播超时时间
+	//	    timer_0_enable(ADV_INTERVAL, timer0_adv_callback);
+				//io_irq_enable(KEY0 | KEY1 | KEY2 | KEY3, &gpio_int_callback);
+			
+			//BLE_SendData("KEY0\r\n", 6);
+			BLE_SendData(&key_SendData[0], 1);
+			//SystemReset();
+		}
 	}
 	if(flag & KEY1)
 	{
-		BLE_SendData("KEY1\r\n", 6);
+		if(KEY1_GPI)
+		{
+
+			adv_times = ADV_TIME_OUT*32768/ADV_INTERVAL;		//广播超时时间
+			timer_0_enable(ADV_INTERVAL, timer0_adv_callback);		
+			
+			//BLE_SendData("KEY1\r\n", 6);
+			BLE_SendData(&key_SendData[1], 1);
+		}
 	}
 	if(flag & KEY2)
 	{
-		BLE_SendData("KEY2\r\n", 6);
+		if(KEY2_GPI)
+		{
+			//BLE_SendData("KEY2\r\n", 6);
+			BLE_SendData(&key_SendData[2], 1);
+		}
 	}
 	if(flag & KEY3)
 	{
-		BLE_SendData("KEY3\r\n", 6);
+		if(KEY3_GPI)
+		{
+			//BLE_SendData("KEY3\r\n", 6);
+			BLE_SendData(&key_SendData[3], 1);
+		}
 	}
 }
 
 int main()
 {	
-	uint16_t adc;	
-	float vat=0.0;
+//	uint16_t adc;	
+//	float vat=0.0;
 //	uint8_t ble_data[20] = {0x11,0x22,0x33,0x44,0x55,0x66,0x77,0x88,0x99,0x00,0x11,0x22,0x33,0x44,0x55,0x66,0x77,0x88,0x99,0x00};;
 	
 	__disable_irq();
 	
 	gpio_init();
 	
-	#ifdef _DEBUG_
+	#ifdef _DEBUG_		//_DEBUG_在config.h里定义
 	dbg_init();
 	dbg_printf("SYD Inc.\r\n");
 	#endif
@@ -697,16 +730,22 @@ int main()
 	__enable_irq();	
 	
 	timer1s_inting=0;
+	led_open( LEDALL );
 	while(1)
 	{		
 		ble_sched_execute();
 		
 		if(timer1s_inting){
 			timer1s_inting=0;
-			//led_turn(LED0);     // 翻转LED0  指示程序运行
+			
+			if(start_adv)
+				led_turn( LED0 | LED1 );     // 翻转LED0  指示程序运行
+			else
+				led_open( LED0 | LED1 );
 			
 			cnt_1s++;
-			if(cnt_1s>=180)
+			//if(cnt_1s>=180)
+			if(cnt_1s>=120)
 			{
 					cnt_1s=0;
 					#ifdef USER_32K_CLOCK_RCOSC
@@ -715,18 +754,18 @@ int main()
 					#endif		
 			}  
 			
-			//ADC
-			adc_init(2);
-			adc_open();
-			adc=get_adcval();
-			vat=(float)adc*3.6/1024;  
-			dbg_printf("ch2 adc : %d vat: %4.3f \n",adc,vat);
+//			//ADC
+//			adc_init(2);
+//			adc_open();
+//			adc=get_adcval();
+//			vat=(float)adc*3.6/1024;  
+//			dbg_printf("ch2 adc : %d vat: %4.3f \n",adc,vat);
 
-			adc_init(3);
-			adc_open();
-			adc=get_adcval();
-			vat=(float)adc*3.6/1024;  
-			dbg_printf("ch3 adc : %d vat: %4.3f \n",adc,vat);
+//			adc_init(3);
+//			adc_open();
+//			adc=get_adcval();
+//			vat=(float)adc*3.6/1024;  
+//			dbg_printf("ch3 adc : %d vat: %4.3f \n",adc,vat);
 							
 		}
 				
@@ -734,7 +773,7 @@ int main()
     march_state_process();
 		#endif
 		
-		if(!adv_times)  led_close(LEDALL);
+		//if(!adv_times)  led_close(LEDALL);
 		SystemSleep();
 	}	
 }

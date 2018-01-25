@@ -1,5 +1,5 @@
 Dependencies for Project 'Ble_Vendor_Service', Target 'Ble_Vendor_Service': (DO NOT MODIFY !)
-F (.\Main\main.c)(0x59B90309)(-c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I.\Include -I.\ble -I.\Main-I "D:\work\ARǹ\AR_GUN_SYD8801_GIT\Vendor Service\RTE"-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\ARM\ARMCM0\Include-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\Include-D__UVISION_VERSION="516" -D_RTE_ -DARMCM0 -DPIXART_ARM_PROJECT-o .\output\main.o --omf_browse .\output\main.crf --depend .\output\main.d)
+F (.\Main\main.c)(0x59DC8912)(-c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I.\Include -I.\ble -I.\Main-I "D:\work\ARǹ\AR_GUN_SYD8801_GIT\Vendor Service\RTE"-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\ARM\ARMCM0\Include-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\Include-D__UVISION_VERSION="516" -D_RTE_ -DARMCM0 -DPIXART_ARM_PROJECT-o .\output\main.o --omf_browse .\output\main.crf --depend .\output\main.d)
 I (.\Include\ARMCM0.h)(0x59AFB077)
 I (D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include\core_cm0.h)(0x55093C04)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x55AEF5F2)
@@ -10,16 +10,15 @@ I (.\Include\syd8801_timer.h)(0x57904384)
 I (.\Include\syd8801_gpio.h)(0x58E76A4F)
 I (.\Include\syd8801_debug.h)(0x56B40026)
 I (.\Include\syd8801_delay.h)(0x57883962)
-I (.\Include\config.h)(0x59B8FC58)
+I (.\Include\config.h)(0x59CDAA49)
 I (.\ble\lib.h)(0x590C59B1)
 I (.\Include\ota.h)(0x578CA3D4)
-I (Main\key.h)(0x59AFB9E4)
-I (Main\led.h)(0x59B7B20B)
-I (.\Include\SYD8801EVB_service.h)(0x58E74CC0)
+I (Main\key.h)(0x59CDB0E2)
+I (Main\led.h)(0x59DC8451)
+I (.\Include\SYD8801EVB_service.h)(0x59BA4524)
 I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x55AEF5F2)
-I (.\Include\syd8801_adc.h)(0x578C2CCC)
 F (.\Main\key.c)(0x5993B4A4)(-c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I.\Include -I.\ble -I.\Main-I "D:\work\ARǹ\AR_GUN_SYD8801_GIT\Vendor Service\RTE"-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\ARM\ARMCM0\Include-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\Include-D__UVISION_VERSION="516" -D_RTE_ -DARMCM0 -DPIXART_ARM_PROJECT-o .\output\key.o --omf_browse .\output\key.crf --depend .\output\key.d)
-I (Main\key.h)(0x59AFB9E4)
+I (Main\key.h)(0x59CDB0E2)
 I (.\Include\ARMCM0.h)(0x59AFB077)
 I (D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include\core_cm0.h)(0x55093C04)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x55AEF5F2)
@@ -29,7 +28,7 @@ I (D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\ARM\ARMCM0\Include\system_ARMCM0.h
 I (.\Include\syd8801_gpio.h)(0x58E76A4F)
 I (.\Include\syd8801_timer.h)(0x57904384)
 F (.\Main\led.c)(0x5795CC78)(-c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I.\Include -I.\ble -I.\Main-I "D:\work\ARǹ\AR_GUN_SYD8801_GIT\Vendor Service\RTE"-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\ARM\ARMCM0\Include-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\Include-D__UVISION_VERSION="516" -D_RTE_ -DARMCM0 -DPIXART_ARM_PROJECT-o .\output\led.o --omf_browse .\output\led.crf --depend .\output\led.d)
-I (Main\led.h)(0x59B7B20B)
+I (Main\led.h)(0x59DC8451)
 I (.\Include\ARMCM0.h)(0x59AFB077)
 I (D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include\core_cm0.h)(0x55093C04)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x55AEF5F2)
