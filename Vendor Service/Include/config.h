@@ -3,7 +3,7 @@
 
 #include "lib.h"
 
-//#define  _DEBUG_
+#define  _DEBUG_
 
 #define USER_32K_CLOCK_RCOSC
 

@@ -202,7 +202,7 @@
       <GroupNumber>1</GroupNumber>
       <FileNumber>1</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
@@ -365,8 +365,8 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\ble\syd_8801_lib.lib</PathWithFileName>
-      <FilenameWithoutPath>syd_8801_lib.lib</FilenameWithoutPath>
+      <PathWithFileName>.\ble\syd_ble_keil.lib</PathWithFileName>
+      <FilenameWithoutPath>syd_ble_keil.lib</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

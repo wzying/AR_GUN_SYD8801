@@ -512,6 +512,8 @@ struct attc_ble_evt {
 	extern uint8_t ATTC_Confirmation(void);
 	
 	extern uint8_t AttTxPacket(uint8_t code, uint8_t *p_buf, uint16_t len);
+
+	extern void smp_aes_encrypt(uint8_t *k, uint8_t* p, uint8_t* c);
 #endif
 
 #endif

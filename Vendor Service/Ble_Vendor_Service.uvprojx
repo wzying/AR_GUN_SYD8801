@@ -482,9 +482,9 @@
           <GroupName>BLE</GroupName>
           <Files>
             <File>
-              <FileName>syd_8801_lib.lib</FileName>
+              <FileName>syd_ble_keil.lib</FileName>
               <FileType>4</FileType>
-              <FilePath>.\ble\syd_8801_lib.lib</FilePath>
+              <FilePath>.\ble\syd_ble_keil.lib</FilePath>
             </File>
           </Files>
         </Group>

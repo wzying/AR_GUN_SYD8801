@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060020: Last Updated: Tue Oct 10 16:47:17 2017
+;#<FEEDBACK># ARM Linker, 5060020: Last Updated: Fri Feb 02 10:17:57 2018
 ;VERSION 0.2
 ;FILE key.o
 __asm___5_key_c_dfb3ce20____REV16 <= USED 0
@@ -23,6 +23,7 @@ ATTC_WriteCmdReq <= USED 0
 ATTC_WriteReq <= USED 0
 AddBondDevice <= USED 0
 AttTxPacket <= USED 0
+BLE_SendData <= USED 0
 CheckFIFOFull <= USED 0
 CodeErase <= USED 0
 CodeUpdate <= USED 0
@@ -33,7 +34,6 @@ DelBondDevice <= USED 0
 DisConnect <= USED 0
 GetBondDevice <= USED 0
 GetClock <= USED 0
-GetDevAddr <= USED 0
 GetLinkParameters <= USED 0
 GetMCUClock <= USED 0
 LLSleep <= USED 0
@@ -77,9 +77,6 @@ get_adcval <= USED 0
 ;FILE syd8801_debug.o
 __asm___15_syd8801_debug_c_dbg_init____REV16 <= USED 0
 __asm___15_syd8801_debug_c_dbg_init____REVSH <= USED 0
-dbg_hexdump <= USED 0
-dbg_init <= USED 0
-dbg_printf <= USED 0
 ;FILE syd8801_delay.o
 __asm___15_syd8801_delay_c_delay_ms____REV16 <= USED 0
 __asm___15_syd8801_delay_c_delay_ms____REVSH <= USED 0
@@ -112,9 +109,7 @@ USART1_Write_String <= USED 0
 __asm___14_syd8801_uart_c_e089bde3____REV16 <= USED 0
 __asm___14_syd8801_uart_c_e089bde3____REVSH <= USED 0
 uart_0_close <= USED 0
-uart_0_init <= USED 0
 uart_0_read <= USED 0
-uart_0_write <= USED 0
 uart_1_close <= USED 0
 uart_1_init <= USED 0
 uart_1_read <= USED 0

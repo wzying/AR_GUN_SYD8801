@@ -10,7 +10,7 @@
 ".\output\syd8801_uart.o"
 ".\output\syd8801_ioi2c.o"
 ".\output\syd8801_adc.o"
-".\ble\syd_8801_lib.lib"
+".\ble\syd_ble_keil.lib"
 ".\output\startup_armcm0.o"
 ".\output\system_armcm0.o"
 --library_type=microlib --strict --scatter ".\Output\Ble_Vendor_Service.sct"

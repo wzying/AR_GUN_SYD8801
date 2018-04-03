@@ -40,6 +40,8 @@
 //#define	ADV_INTERVAL			1638		//50ms
 #define	ADV_INTERVAL			16384		//500ms
 
+struct gap_ble_addr local_Addr;
+
 static struct gap_att_report_handle *g_report;   //GATT属性列表头,传入到协议栈中进行初始化
 
 static uint8_t start_tx=0;
@@ -649,6 +651,43 @@ void march_state_process(void){
 		}
 }
 #endif
+
+	uint8_t plaintext[16]={0x00, 0xF2, 0xE3, 0xD4, 0x6F, 0x99, 0xA7, 0xFE, 0xAE, 0x7D, 0xC6, 0x55, 0x44, 0xA3, 0x82, 0x11};//明文
+	//uint8_t encrypted[]={0x13, 0x02, 0xf1, 0xe0, 0xdf, 0xce, 0xbd, 0xac, 0x79, 0x68, 0x57, 0x46, 0x35, 0x24, 0x13, 0x02};
+  uint8_t encrypted[16];//密文
+	//uint8_t kEY[16]={0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF0, 0xE0, 0xA0, 0xB0, 0xE0, 0xC0, 0xB0, 0xD8, 0x82, 0x18};//秘钥
+  uint8_t kEY[16]={0x69, 0xC6, 0xA5, 0xA8, 0x5C, 0xC9, 0xF0, 0xE0, 0xA0, 0xB0, 0xE0, 0xC0, 0xB0, 0xD8, 0x82, 0x18};//秘钥
+	
+void Set_Aes_Key(void)
+{
+	uint8_t i=0;
+	if(GetDevAddr(&local_Addr))
+	{
+		dbg_printf("type:%d \r\n",local_Addr.type);
+		dbg_hexdump("local addr:\r\n",local_Addr.addr,6);
+	}
+
+//	for(i=0;i<6;i++)
+//	{
+//		kEY[i] = local_Addr.addr[i];
+//	}
+}	
+	
+void Aes_Encrypt(uint8_t d)
+{
+	//uint8_t k[16] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+	//uint8_t p[16] = {0x00, 0xFF, 0XEE, 0XDD, 0XCC, 0XBB, 0XAA, 0X99, 0X88, 0X77, 0X66, 0X55, 0X44, 0X33, 0X22, 0X11};
+	
+	plaintext[0] = d;
+	smp_aes_encrypt(kEY,plaintext,encrypted);
+	//smp_aes_encrypt(k,p,encrypted);
+	//BLE_SendData(encrypted,16);
+	
+	dbg_hexdump("aes key:\r\n",kEY,16);
+	dbg_hexdump("plaintext:\r\n",plaintext,16);
+	dbg_hexdump("encrypted:\r\n",encrypted,16);
+}
+
 /*
 	外部中断回调函数 - 上升沿触发中断
 	功能键： KEY0  -> 0x04
@@ -665,41 +704,35 @@ static void gpio_int_callback(void)
 	{
 		if(KEY0_GPI)
 		{
-	//			adv_times = ADV_TIME_OUT*32768/ADV_INTERVAL;		//广播超时时间
-	//	    timer_0_enable(ADV_INTERVAL, timer0_adv_callback);
-				//io_irq_enable(KEY0 | KEY1 | KEY2 | KEY3, &gpio_int_callback);
-			
-			//BLE_SendData("KEY0\r\n", 6);
-			BLE_SendData(&key_SendData[0], 1);
-			//SystemReset();
+			//BLE_SendData(&key_SendData[0], 1);
+			Aes_Encrypt(key_SendData[0]);
 		}
 	}
 	if(flag & KEY1)
 	{
 		if(KEY1_GPI)
 		{
-
 			adv_times = ADV_TIME_OUT*32768/ADV_INTERVAL;		//广播超时时间
 			timer_0_enable(ADV_INTERVAL, timer0_adv_callback);		
 			
-			//BLE_SendData("KEY1\r\n", 6);
-			BLE_SendData(&key_SendData[1], 1);
+			//BLE_SendData(&key_SendData[1], 1);
+			Aes_Encrypt(key_SendData[1]);
 		}
 	}
 	if(flag & KEY2)
 	{
 		if(KEY2_GPI)
 		{
-			//BLE_SendData("KEY2\r\n", 6);
-			BLE_SendData(&key_SendData[2], 1);
+			//BLE_SendData(&key_SendData[2], 1);
+			Aes_Encrypt(key_SendData[2]);
 		}
 	}
 	if(flag & KEY3)
 	{
 		if(KEY3_GPI)
 		{
-			//BLE_SendData("KEY3\r\n", 6);
-			BLE_SendData(&key_SendData[3], 1);
+			//BLE_SendData(&key_SendData[3], 1);
+			Aes_Encrypt(key_SendData[1]);//替代KEY1（因为模块上面没有IO13）
 		}
 	}
 }
@@ -726,9 +759,11 @@ int main()
 	adv_times = ADV_TIME_OUT*32768/ADV_INTERVAL;		//广播超时时间
 	timer_0_enable(ADV_INTERVAL, timer0_adv_callback);
 	
+	Set_Aes_Key();
+
 	io_irq_enable(KEY0 | KEY1 | KEY2 | KEY3, &gpio_int_callback);
 	__enable_irq();	
-	
+
 	timer1s_inting=0;
 	led_open( LEDALL );
 	while(1)
